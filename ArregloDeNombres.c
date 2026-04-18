@@ -6,6 +6,7 @@
 
     //---FUNCIONES---
     void mostrarPersonas(char *V[], int n);
+    int buscarNombre(char *V[], int n, char *palabra);
 
 
 int main(){
@@ -45,3 +46,15 @@ int main(){
         
 
     }
+
+
+    int buscarNombre(char *V[], int n, char *palabra){
+    for (int i = 0; i < n; i++)
+    {
+        if (strstr(V[i], palabra) != NULL)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
