@@ -96,7 +96,11 @@
         printf("\n--- Clientes y productos cargados ---\n");
         for (int i = 0; i < cantClientes; i++)
         {
+
             printf("ID: %d - Nombre: %s\n", clientes[i].clienteID, clientes[i].nombreCliente);
+
+            //Para punto v
+            float totalCliente = 0;
 
             //AGREGADO PARA EL PUNTO iii
 
@@ -106,17 +110,18 @@
             {
 
                 //punto iv- calcular costo producto y mostrarlo
-                float total = costoProducto(clientes[i].productos[j]);
+                float totalProducto = costoProducto(clientes[i].productos[j]);
+                totalCliente = totalCliente + totalProducto;
 
-                printf("Producto: %d | Cantidad: %d | Tipo: %s | Precio: %.2f | Total: %.2f\n", 
+                printf("Producto: %d | Cantidad: %d | Tipo: %s | Precio: $%.2f | Total: $%.2f\n", 
                     clientes[i].productos[j].productoID,
                     clientes[i].productos[j].cantidad,
                     clientes[i].productos[j].tipoProducto,
                     clientes[i].productos[j].precioUnitario,
-                    total
+                    totalProducto
                     );
             }
-            
+            printf("TOTAL A PAGAR DEL CLIENTE: $%.2f\n", totalCliente);
         }
         
         //LIBERAR MEMORIA PARA LOS NOMBRE DE LOS CLIENTES
@@ -129,6 +134,9 @@
         
         //LIBERO MEMORIA PARA LA RESERVA DE CLIENTES
         free(clientes);
+
+        //punto v total cliente
+
 
         return 0;
     }
