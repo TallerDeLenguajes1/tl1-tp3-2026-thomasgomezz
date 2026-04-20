@@ -25,6 +25,9 @@
         Producto *productos;  //
     }Cliente;
     
+    //---FUNCIONES---
+    float costoProducto(Producto p);
+
 
     #define MAX_CLIENTES 5
 
@@ -101,11 +104,16 @@
 
             for (int j = 0; j < clientes[i].cantProductosAPedir; j++)
             {
-                printf("Producto: %d | Cantidad: %d | Tipo: %s | Precio: %.2f\n", 
+
+                //punto iv- calcular costo producto y mostrarlo
+                float total = costoProducto(clientes[i].productos[j]);
+
+                printf("Producto: %d | Cantidad: %d | Tipo: %s | Precio: %.2f | Total: %.2f\n", 
                     clientes[i].productos[j].productoID,
                     clientes[i].productos[j].cantidad,
                     clientes[i].productos[j].tipoProducto,
-                    clientes[i].productos[j].precioUnitario
+                    clientes[i].productos[j].precioUnitario,
+                    total
                     );
             }
             
@@ -123,4 +131,9 @@
         free(clientes);
 
         return 0;
+    }
+
+    //---FUNCIONES---
+    float costoProducto(Producto p){
+        return p.cantidad * p.precioUnitario;
     }
